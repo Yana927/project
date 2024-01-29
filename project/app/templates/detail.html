@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Events{% endblock %}
+{% block content %}
+   {{super()}}
+   <div class="container text-center">
+       <a href="{{ url_for('index') }}"><h2>Добавить событие</h2></a>
+   </div>
+   <div class="mt-4">
+       <ul class="list-group">
+           {% for event in events %}
+               <li class="list-group-item">
+                   <p>{{ event }}</p>
+                   <form method="post" action="{{ url_for('delete_event', id=event.id) }}" style="display: inline">
+                    <button type="submit" class="btn btn-sm btn-danger mx-1">Удалить</button>
+                </form>
+               </li>
+           {% endfor %}
+       </ul>
+   </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Main page{% endblock %}
+{% block content %}
+   {{super()}}
+   <div class="container text-center">
+    <a href="{{ url_for('view_detail') }}"><h2>Посмотреть события</h2></a>
+       <form class="d-inline-block" style="max-width: 33%;" action="{{ url_for('add_event') }}" method="POST">
+           <div class="form-group">
+               <label for="eventDate">Дата</label>
+               <input type="date" name="eventDate" class="form-control" placeholder="Дата события">
+           </div>
+           <div class="form-group">
+               <label for="eventName">Событие</label>
+               <input type="text" name="eventName" class="form-control" placeholder="Название события">
+           </div>
+           <div class="form-group">
+               <label for="eventDuration">Продолжительность</label>
+               <input type="number" name="eventDuration" class="form-control" placeholder="Продолжительность" min="1" max="24">
+           </div>
+           <button type="submit" class="btn btn-success">Записать</button>
+       </form>
+   </div>
+{% endblock %}
